@@ -6,57 +6,48 @@ package com.mycompany.veterinaria.service;
 
 import jakarta.persistence.EntityManager;
 import java.util.List;
-import veterinaria.dao.MascotaDAO;
-import veterinaria.mode.entity.Mascota;
+import veterinaria.dao.PropietarioDAO;
+import veterinaria.mode.entity.Propietario;
 import veterinaria.util.JPAUtil;
-
 
 /**
  *
  * @author juand
  */
-public class MascotaService {
+public class PropietarioService {
     
-    public void crear(Mascota mascota){
-        EntityManager em = JPAUtil.getEntityManager();
-        try {
-            new MascotaDAO(em).create(mascota);
-        } finally {
-            em.close();
-        }
-    }
-    
-    public Mascota buscarPorId(Long id){
+    public void crear (Propietario propietario){
         EntityManager em = JPAUtil.getEntityManager();
         try{
-            return new MascotaDAO(em).buscarPorId(id);
+            PropietarioDAO dao = new PropietarioDAO(em);
+            dao.create(propietario);
         }finally{
             em.close();
         }
     }
     
-    public List <Mascota> ListarTodos(){
+    public Propietario buscarPorId(Long id){
         EntityManager em = JPAUtil.getEntityManager();
         try{
-            return new MascotaDAO(em).listarTodos();
+            return new PropietarioDAO(em).buscarPorId(id);
         }finally{
             em.close();
         }
     }
     
-    public List<Mascota> listarPorPropietario(Long idPropietario){
+    public List <Propietario> ListarTodos(){
         EntityManager em = JPAUtil.getEntityManager();
         try{
-            return new MascotaDAO(em).buscarPorPropietario(idPropietario);
+            return new PropietarioDAO(em).listarTodos();
         }finally{
             em.close();
         }
     }
     
-    public void actualizar (Mascota mascota){
+    public void actualizar (Propietario propietario){
         EntityManager em = JPAUtil.getEntityManager();
         try{
-            new MascotaDAO(em).actualizar(mascota);
+            new PropietarioDAO(em).actualizar(propietario);
         }finally{
             em.close();
         }
@@ -65,12 +56,10 @@ public class MascotaService {
     public void eliminar (Long id){
         EntityManager em = JPAUtil.getEntityManager();
         try{
-            new MascotaDAO(em).eliminar(id);
+            new PropietarioDAO(em).eliminar(id);
         }finally{
             em.close();
         }
     }
-    
-    
     
 }
