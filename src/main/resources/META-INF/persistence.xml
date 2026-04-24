@@ -9,7 +9,10 @@
     <class>veterinaria.mode.entity.MascotaAlergia</class>
     <class>veterinaria.mode.entity.Medicamento</class>
     <class>veterinaria.mode.entity.Propietario</class>
+    <class>veterinaria.mode.entity.Rol</class>
     <class>veterinaria.mode.entity.Tratamiento</class>
+    <class>veterinaria.mode.entity.Usuario</class>
+    <class>veterinaria.mode.entity.UsuarioRol</class>
     <class>veterinaria.mode.entity.Vacuna</class>
     <class>veterinaria.mode.entity.Vacunacion</class>
     <class>veterinaria.mode.entity.Veterinario</class>
