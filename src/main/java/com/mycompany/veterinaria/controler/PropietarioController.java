@@ -24,15 +24,9 @@ public class PropietarioController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
         
-        String id = req.getParameter("id");
-        if( id != null){
-            Propietario propietario = service.buscarPorId(Long.parseLong(id));
-            mapper.writeValue(resp.getWriter(), propietario);
-        }else{
-            List<Propietario> propietarios = service.ListarTodos();
-            mapper.writeValue(resp.getWriter(), propietarios);
-        }
+        mapper.writeValue(resp.getWriter(),service.ListarTodos());
     }
     
     @Override

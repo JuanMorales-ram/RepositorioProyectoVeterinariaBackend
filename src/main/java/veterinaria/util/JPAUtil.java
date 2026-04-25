@@ -12,10 +12,18 @@ public class JPAUtil {
             Persistence.createEntityManagerFactory("veterinariaPU"); 
     
     
+    private JPAUtil(){
+        //evita instanciacion
+    }
     
     public static EntityManager getEntityManager(){
     
         return emf.createEntityManager(); 
+    }
     
+    public static void close(){
+        if (emf !=null && emf.isOpen()){
+            emf.close();
+        }
     }
 }

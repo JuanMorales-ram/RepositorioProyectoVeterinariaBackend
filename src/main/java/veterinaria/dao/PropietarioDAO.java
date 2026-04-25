@@ -17,4 +17,10 @@ public class PropietarioDAO extends GenericDAO<Propietario, Long> {
         super(em, Propietario.class);
     }
 
+    
+    public long count(){
+        return em.createQuery("SELECT COUNT(p) FROM Propietario p", Long.class)
+                .getSingleResult();
+    }
+    
 }

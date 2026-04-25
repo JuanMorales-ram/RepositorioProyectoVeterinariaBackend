@@ -12,19 +12,24 @@ import veterinaria.mode.entity.Mascota;
  *
  * @author migad
  */
-public class MascotaDAO extends GenericDAO<Mascota, Long>{
-    
-    public MascotaDAO(EntityManager em){
+public class MascotaDAO extends GenericDAO<Mascota, Long> {
+
+    public MascotaDAO(EntityManager em) {
         super(em, Mascota.class);
     }
+
+    public List<Mascota> buscarPorPropietario(Long idPropietario) {
+        return em.createQuery(
+                "SELECT m FROM Mascota m WHERE m.propietario.idPropietario = :id",
+                Mascota.class
+        )
+                .setParameter("id", idPropietario)
+                .getResultList();
+    }
     
-   public List<Mascota> buscarPorPropietario(Long idPropietario) {
-    return em.createQuery(
-        "SELECT m FROM Mascota m WHERE m.propietario.idPropietario = :id",
-        Mascota.class
-    )
-    .setParameter("id", idPropietario)
-    .getResultList();
-}
-    
+    public long count(){
+        return em.createQuery("SELECT COUNT(m) FROM Mascota m", Long.class)
+                .getSingleResult();
+    }
+
 }

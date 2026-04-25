@@ -17,4 +17,9 @@ public class VeterinarioDAO extends GenericDAO<Veterinario, Long> {
         super(em, Veterinario.class);
     }
 
+    
+    public long count(){
+        return em.createQuery("SELECT COUNT(v) FROM Veterinario v", Long.class)
+                .getSingleResult();
+    }
 }
